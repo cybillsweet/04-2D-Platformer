@@ -8,14 +8,14 @@ var direction = 1
 
 export var gravity = Vector2(0,30)
 
-export var move_speed = 20
-export var max_move = 300
+export var move_speed = 10
+export var max_move = 100
 
-export var jump_speed = 200
-export var max_jump = 1200
+export var jump_speed = 100
+export var max_jump = 500
 
-export var leap_speed = 200
-export var max_leap = 1200
+export var leap_speed = 100
+export var max_leap = 400
 
 var moving = false
 var is_jumping = false
@@ -29,11 +29,13 @@ func _physics_process(_delta):
 	if should_direction_flip:
 		if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
 		if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
-	
+
 	if is_on_floor():
 		double_jumped = false
 		set_wall_raycasts(true)
-
+		
+	if position.y > Global.death_zone:
+		queue_free()
 func is_moving():
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		return true
@@ -80,5 +82,11 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Left.enabled = is_enabled
 	$Wall/Right.enabled = is_enabled
 
+func do_damage(d):
+	Global.decrease_health(d)
+	if Global.health <= 0:
+		die()
+	
 func die():
+	Global.decrease_lives(1)
 	queue_free()

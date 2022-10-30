@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Joystick-5KjV.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/EvilEmpire-4BBVK.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Levels/Control.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.341176, 0.341176, 0.341176, 1 )
+border_width_left = 2
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.431373, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.243137, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.690196, 0.2, 0.2, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.376471, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 10 )
+Button/styles/focus = SubResource( 11 )
+Button/styles/hover = SubResource( 12 )
+Button/styles/normal = SubResource( 13 )
+Button/styles/pressed = SubResource( 14 )
+Label/fonts/font = SubResource( 7 )
+
+[node name="Game_Over" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 9 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.584314 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 400.0
+text = "Game Over!
+Would you like to play again?"
+align = 1
+valign = 1
+
+[node name="Play_Again" type="Button" parent="."]
+margin_left = 412.0
+margin_top = 280.0
+margin_right = 612.0
+margin_bottom = 316.0
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 412.0
+margin_top = 330.0
+margin_right = 612.0
+margin_bottom = 366.0
+text = "Quit"
+
+[connection signal="pressed" from="Play_Again" to="." method="_on_Play_Again_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
