@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Levels/Background.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/tiles.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/tile_0112.png" type="Texture" id=11]
 [ext_resource path="res://Assets/tile_0111.png" type="Texture" id=12]
 [ext_resource path="res://Levels/Portal.gd" type="Script" id=13]
+[ext_resource path="res://Assets/computer-love-121106 (1).mp3" type="AudioStream" id=14]
 
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( 0, 0, 18, 0, 18, 18, 0, 18 )
@@ -545,5 +546,10 @@ margin_bottom = 20.0
 text = "Health"
 align = 1
 valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -3.714
+autoplay = true
 
 [connection signal="body_entered" from="Portal_to_2" to="Portal_to_2" method="_on_Portal_entered"]

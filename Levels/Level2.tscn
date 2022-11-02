@@ -1,7 +1,8 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Levels/Background.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/tiles.png" type="Texture" id=2]
+[ext_resource path="res://Assets/computer-love-121106 (1).mp3" type="AudioStream" id=3]
 [ext_resource path="res://Player/Player_Container.gd" type="Script" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://Enemy/Enemy_Ground.tscn" type="PackedScene" id=6]
@@ -1409,6 +1410,7 @@ script = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Portal_to_3"]
 position = Vector2( 1323, 280 )
 frames = SubResource( 41 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="Portal_to_3"]
@@ -1468,5 +1470,10 @@ margin_bottom = 20.0
 text = "Health"
 align = 1
 valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -3.714
+autoplay = true
 
 [connection signal="body_entered" from="Portal_to_3" to="Portal_to_3" method="_on_Portal_entered"]

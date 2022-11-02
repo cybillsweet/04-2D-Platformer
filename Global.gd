@@ -7,7 +7,7 @@ var health = 100
 var max_health = 100
 var level = 1
 
-var death_zone = 530
+var death_zone = 500
 
 func _ready():
 	pass

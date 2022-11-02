@@ -2,9 +2,11 @@ extends KinematicBody2D
 
 var player = null
 onready var ray = $RayCast2D
-export var speed = 100
+export var speed = 80
 export var looking_speed = 25
 var line_of_sight = false
+
+export var damage = 50
 
 export var looking_color = Color(0.455,0.753,0.988,0.25)
 export var los_color = Color(0.988,0.753,0.455,0.5)
@@ -13,7 +15,7 @@ var points = []
 const margin = 1.5
 
 func _ready():
-	position = Vector2(2000,100)
+	position = Vector2(1600,100)
 
 func _physics_process(_delta):
 	var velocity = Vector2.ZERO
@@ -51,7 +53,7 @@ func _draw():
 
 func _on_Area2D_body_entered(body):
 	if body.name == 'Player':
-		body.die()
+		body.do_damage(damage)
 		queue_free()
 
 

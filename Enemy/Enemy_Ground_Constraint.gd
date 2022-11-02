@@ -21,10 +21,10 @@ func _physics_process(_delta):
 	move_and_slide_with_snap(velocity, Vector2.UP)
 	
 	
-	func _on_Area2D_body_entered(body):
-		if velocity.x !=0 and (body.name == "Platform" or body.name == "Ground"):
-			velocity.x = 0
-			direction *= -1
-		if body.name == "Player":
-			body.do_damage(damage)
+func _on_Area2D_body_entered(body):
+	if velocity.x !=0 and (body.name == "Platform" or body.name == "Ground"):
+		velocity.x = 0
+		direction *= -1
+	if body.name == "Player":
+		body.do_damage(damage)
 
